@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>PROD 2</title>
+    <link rel="stylesheet" href="styles/reset.css" />
+    <link rel="stylesheet" href="styles/variables.css" />
+    <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header__container">
+            <h1 class="header__logo">Luxury</h1>
+            <nav class="header__nav">
+                <button class="header__icon-btn" data-page="search" aria-label="Search">
+                    <img src="images/icons/search.svg" alt="Search" />
+                </button>
+                <button class="header__icon-btn header__cart-btn" data-page="cart" aria-label="Cart">
+                    <img src="images/icons/cart.svg" alt="Cart" />
+                    <span class="header__cart-badge" id="cartBadge">0</span>
+                </button>
+                <button class="header__icon-btn" data-page="profile" aria-label="Profile">
+                    <img src="images/icons/profile.svg" alt="Profile" />
+                </button>
+                <button class="header__icon-btn" data-page="history" aria-label="Order History">
+                    <img src="images/icons/history.svg" alt="History" />
+                </button>
+                <button class="header__icon-btn" id="themeToggle" aria-label="Toggle theme">
+                    <img src="images/icons/sun.svg" alt="Theme" id="themeIcon" />
+                </button>
+            </nav>
+            <div class="header__search-wrapper">
+                <input type="text" class="header__search" placeholder="Search products..." id="searchInput" />
+                <div class="search-dropdown" id="searchDropdown"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Product List Page -->
+        <section class="page page--active" id="productListPage">
+            <div class="page__container">
+                <div class="filters">
+                    <label class="filter-item">
+                        <input type="checkbox" class="filter-item__checkbox" value="Yacht" />
+                        <span class="filter-item__label">Yacht</span>
+                    </label>
+                    <label class="filter-item">
+                        <input type="checkbox" class="filter-item__checkbox" value="Plane" />
+                        <span class="filter-item__label">Plane</span>
+                    </label>
+                    <label class="filter-item">
+                        <input type="checkbox" class="filter-item__checkbox" value="Mansion" />
+                        <span class="filter-item__label">Mansion</span>
+                    </label>
+                    <label class="filter-item">
+                        <input type="checkbox" class="filter-item__checkbox" value="Island" />
+                        <span class="filter-item__label">Island</span>
+                    </label>
+                </div>
+                <div class="products-grid" id="productsGrid">
+                    <!-- Products will be loaded here -->
+                </div>
+                <div class="products-skeleton" id="productsSkeleton">
+                    <!-- Skeleton loaders -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Cart Page -->
+        <section class="page" id="cartPage">
+            <div class="page__container">
+                <h2 class="page__title">Shopping Cart</h2>
+                <div class="cart" id="cartContent">
+                    <!-- Cart items will be loaded here -->
+                </div>
+                <div class="cart-empty" id="cartEmpty">
+                    <p>Cart is empty</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Page -->
+        <section class="page" id="profilePage">
+            <div class="page__container">
+                <h2 class="page__title">My Profile</h2>
+                <form class="profile-form" id="profileForm">
+                    <div class="form-group">
+                        <label class="form-label" for="profileName">Name</label>
+                        <input type="text" class="form-input" id="profileName" name="name" />
+                        <span class="form-error" id="nameError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="profileEmail">E-mail</label>
+                        <input type="email" class="form-input" id="profileEmail" name="email" />
+                        <span class="form-error" id="emailError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="checkbox-input" id="profileNotifications" name="notifications" />
+                            <span class="checkbox-text">Receive notifications about new products</span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn--primary">Save</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Order History Page -->
+        <section class="page" id="historyPage">
+            <div class="page__container">
+                <h2 class="page__title">Order History</h2>
+                <div class="orders" id="ordersContent">
+                    <!-- Orders will be loaded here -->
+                </div>
+                <div class="orders-empty" id="ordersEmpty">
+                    <p>Order history is empty</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal__overlay"></div>
+        <div class="modal__content">
+            <button class="modal__close" id="modalClose">
+                <img src="images/icons/close.svg" alt="Close" />
+            </button>
+            <div class="modal__body" id="modalBody">
+                <!-- Modal content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Remove Product Modal -->
+    <div class="modal" id="removeModal">
+        <div class="modal__overlay"></div>
+        <div class="modal__content modal__content--small">
+            <div class="modal__body">
+                <h3 class="modal__title">Remove Product?</h3>
+                <p class="modal__text">Are you sure you want to remove this product from your cart?</p>
+                <div class="modal__actions">
+                    <button class="btn btn--danger" id="confirmRemove">Yes, remove</button>
+                    <button class="btn btn--secondary" id="cancelRemove">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
